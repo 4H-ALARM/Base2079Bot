@@ -44,8 +44,8 @@ public final class Constants {
         public static final double closedLoopRamp = 0.0;
         public static final double maxSpeed = 3.93;
         public static final double maxAngularVelocity = 10.0;
-        public static final PIDConfig anglemotorPID = new PIDConfig(40, 0.4, 2.5);
-        public static final PIDConfig drivemotorPID = new PIDConfig(1.25, 0.01, 0.1125);
+        public static final PIDConfig anglemotorPID = new PIDConfig(1, 0, 0);
+        public static final PIDConfig drivemotorPID = new PIDConfig(1, 0, 0);
         public static final double driveKS = 0.32;
         public static final double driveKV = 1.51;
         public static final double driveKA = 0.27;
