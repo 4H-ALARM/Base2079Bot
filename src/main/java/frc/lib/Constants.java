@@ -12,6 +12,7 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -23,15 +24,15 @@ public final class Constants {
     public static final boolean DEBUG = false;
     public static final double stickDeadband = 0.1;
 
-
-    public static final RobotConfig robotConfig = new RobotConfig(10, 10, new ModuleConfig(2, 10, 1.0, null, 80, 1));
+    public static final driveTrainConfig drivetrainconfig =  new driveTrainConfig(Units.inchesToMeters(20.75), Units.inchesToMeters(20.75), 2);
+    public static final RobotConfig robotConfig = new RobotConfig(10, 10, new ModuleConfig(2, 10, 1.0, new DCMotor(12, 0.5, 60, 0.5, 6000, 1), 40, 1), new Translation2d(drivetrainconfig.wheelBase / 2.0, drivetrainconfig.trackWidth / 2.0), new Translation2d(drivetrainconfig.wheelBase / 2.0, -drivetrainconfig.trackWidth / 2.0), new Translation2d(-drivetrainconfig.wheelBase / 2.0, drivetrainconfig.trackWidth / 2.0), new Translation2d(-drivetrainconfig.wheelBase / 2.0, -drivetrainconfig.trackWidth / 2.0));
 
     public static final class SwerveConstants {
-        public static final COTSswerveconfig chosenModule = COTSswerveconfig.KrakenX60Falcon500MK4i(COTSswerveconfig.driveRatios.L1);
-        public static final swervemoduleconfig mod0 = new swervemoduleconfig(11, 12, 13, Rotation2d.fromRotations(0.299805)); // Front Left Module
-        public static final swervemoduleconfig mod1 = new swervemoduleconfig(21, 22, 23, Rotation2d.fromRotations(0.343018)); // Front Right Module
-        public static final swervemoduleconfig mod2 = new swervemoduleconfig(31, 32, 33, Rotation2d.fromRotations(0.128906)); // Back Left Module
-        public static final swervemoduleconfig mod3 = new swervemoduleconfig(41, 42, 43, Rotation2d.fromRotations(0.060303)); // Back Right Module
+        public static final COTSswerveconfig chosenModule = COTSswerveconfig.KrakenX60Falcon500MK4i(COTSswerveconfig.driveRatios.L3);
+        public static final swervemoduleconfig mod0 = new swervemoduleconfig(12, 13, 11, Rotation2d.fromRotations(0.299805)); // Front Left Module
+        public static final swervemoduleconfig mod1 = new swervemoduleconfig(22, 23, 21, Rotation2d.fromRotations(0.343018)); // Front Right Module
+        public static final swervemoduleconfig mod2 = new swervemoduleconfig(32, 33, 31, Rotation2d.fromRotations(0.128906)); // Back Left Module
+        public static final swervemoduleconfig mod3 = new swervemoduleconfig(42, 43, 41, Rotation2d.fromRotations(0.060303)); // Back Right Module
         public static final driveTrainConfig drivetrainconfig =  new driveTrainConfig(Units.inchesToMeters(20.75), Units.inchesToMeters(20.75), chosenModule.wheelCircumference);
         public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(new Translation2d(drivetrainconfig.wheelBase / 2.0, drivetrainconfig.trackWidth / 2.0), new Translation2d(drivetrainconfig.wheelBase / 2.0, -drivetrainconfig.trackWidth / 2.0), new Translation2d(-drivetrainconfig.wheelBase / 2.0, drivetrainconfig.trackWidth / 2.0), new Translation2d(-drivetrainconfig.wheelBase / 2.0, -drivetrainconfig.trackWidth / 2.0));
         public static final double driveGearRatio = chosenModule.driveGearRatio;
@@ -54,39 +55,9 @@ public final class Constants {
 
 
     public static final int pigeonID = 4;
-    public static final indexerConfig indexerconfig = new indexerConfig(
-            55,
-            0.5,
-            0.5,
-            -0.2,
-            0.05,
-            0,
-            0,  
-            1
-    );
-    public static final shooterConfig shooterconfig = new shooterConfig(
-            53,
-            54,
-            0,
-            0,
-            -0.1,
-            0.35,
-            0,
-            0.05,
-            0,
-            10,
-            1
+    
 
-    );
-    public static final intakeConfig intakeconfig = new intakeConfig(
-            50,
-            -0.8
-    );
-
-    public static final beamBreakConfig beambreakconfig = new beamBreakConfig(
-            0
-    );
-
+    
 
     public static final cameraConfig camera1Config = new cameraConfig(
             "camera1",
@@ -95,18 +66,7 @@ public final class Constants {
             PhotonPoseEstimator.PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR
             );
 
-    public static armConfig armConfig = new armConfig(
-            51,
-            52,
-            new PIDConfig(1.0, 0.0, 0.0),
-            0.51,
-            0.45,
-            0.661,
-            1,
-            163.32+180,
-            new DigitalInput(2)
-
-    );
+    
 
 
 }

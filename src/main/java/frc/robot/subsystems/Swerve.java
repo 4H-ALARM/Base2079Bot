@@ -48,14 +48,14 @@ public class Swerve extends SubsystemBase {
     public final TunableValue PATHPLANNER_ROTATION_I;
     public final TunableValue PATHPLANNER_ROTATION_D;
 
-    private final PhotonCameraHandler camera1;
+    //private final PhotonCameraHandler camera1;
 
     public Swerve(PhotonCameraHandler photonCameraHandler1) {
         gyro = new Pigeon2(Constants.pigeonID);
         gyro.clearStickyFaults();
         var stateStdDevs = VecBuilder.fill(0.1, 0.1, 0.1);
         var visionStdDevs = VecBuilder.fill(1, 1, 1);
-        this.camera1 = new PhotonCameraHandler(Constants.camera1Config);
+        //this.camera1 = new PhotonCameraHandler(Constants.camera1Config);
 
 
         PATHPLANNER_TRANSLATION_P = new TunableValue("PATHPLANNER_TRANSLATION_P", Constants.SwerveConstants.pathplannertranslationpid.kp, Constants.DEBUG);
@@ -190,7 +190,7 @@ public class Swerve extends SubsystemBase {
 
 
 
-        camera1.updateFieldPose(swerveDrivePoseEstimator);
+        //camera1.updateFieldPose(swerveDrivePoseEstimator);
 
 
 
